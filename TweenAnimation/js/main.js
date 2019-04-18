@@ -51,7 +51,7 @@ window.onload = function() {
 
   /**
    * The render function.
-   * Shows the position of the position of the logo on the screen.
+   * Showsthe y-position of the logo on the screen.
    * Using the debug.text method is easier than clogging up the browser's console
    */
   function render() {
