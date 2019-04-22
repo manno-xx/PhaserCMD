@@ -91,6 +91,7 @@ window.onload = function() {
     // calculate how much time has passed
     // (game.time.elapsed is unreliable as it _may_ include time passed in paused state)
     var timePassed = game.time.elapsedMS / 1000;
+    
     // each layer has a different fraction to multiply the speed by.
     layer1.tilePosition.x -= 1 * speed * timePassed;
     layer2.tilePosition.x -= 0.5 * speed * timePassed;
