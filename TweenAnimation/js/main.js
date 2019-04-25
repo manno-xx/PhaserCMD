@@ -55,6 +55,6 @@ window.onload = function() {
    * Using the debug.text method is easier than clogging up the browser's console
    */
   function render() {
-    game.debug.text(logo.y, 10, 10);
+    game.debug.text(`The y position is ${logo.y}`, 10, 10);
   }
 };

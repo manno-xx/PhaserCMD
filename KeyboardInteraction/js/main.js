@@ -14,11 +14,19 @@ window.onload = function() {
 
   var fire;
 
+  /**
+   * Set up the space bar and the function to be called as a result of its press
+   * 
+   */
   function create() {
     fire = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     fire.onDown.add(shoot);
   }
 
+  /**
+   * Handler for the space bar press.
+   * Logs a message and changes the background color
+   */
   function shoot() {
     console.log("Shot Fired!");
 
@@ -26,5 +34,4 @@ window.onload = function() {
     var color = Phaser.Color.RGBtoString(game.rnd.integerInRange(0, 256), game.rnd.integerInRange(0, 256), game.rnd.integerInRange(0, 256), "#");
     game.stage.backgroundColor = color;
   }
-
 };

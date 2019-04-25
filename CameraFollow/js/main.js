@@ -1,11 +1,13 @@
 /**
- * Very basic demo of creating a map based on:
+ * Very basic demo of moving across a larger tile map. Tile map is based on:
  * - a tile set (png file with tiles)
  * - a tile map (JSON created using Tiled (https://www.mapeditor.org))
  * 
  * The tile set was created using TexturePacker (https://www.codeandweb.com/texturepacker)
  *
- * No fancy features used of either application
+ * The tile map consists of multiple layers (could be used for sorting or collision stuff)
+ * 
+ * As the character moves across the screen (using cursor keys), the virtual camera follows along
  */
 
  /**
