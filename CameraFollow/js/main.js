@@ -79,7 +79,7 @@ window.onload = function() {
 
   /**
    * Move the Phaser dude using the cursor keys.
-   * The camera moves along with it according to the follow setting
+   * The camera moves along with it according to the follow setting applied in the create function
    * 
    */
   function update(){
