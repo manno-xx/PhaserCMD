@@ -50,6 +50,10 @@ window.onload = function() {
     emitter = game.add.emitter(0, 0, 10);
     emitter.setAlpha(1, 0, 1000, Phaser.Easing.Circular.Out);
     emitter.makeParticles('explosion');
+
+    // actually not a flash but a fade in
+    // flash fills the screen and then reveals it in the set amount of milliseconds (here 2000)
+    game.camera.flash(0x000000, 2000, true, 1);
   }
 
   /**
