@@ -2,9 +2,8 @@
  * Demo of basic physics
  *
  * In this demo there are no loaded graphics.
- * Instead of a sprite, a graphics object is used. Graphics objects can be drawn onto.
+ * Instead of a sprite, a graphics object is used. Graphics objects can be drawn onto (in this case a circle and a rectangle).
  *
- * This
  */
 
 window.onload = function() {
@@ -20,10 +19,13 @@ window.onload = function() {
   /**
    * Create the graphic objects and initialise physics
    * 
-   * Becuase the anchor point of the objects are not in the top-left, 
+   * Because the anchor point of the objects are not in the top-left, 
    *    the bodies for the objects need to be offset manually (here using setCircle() and setSize())
    */
   function create() {
+
+    // get the physics system going
+    // (Phaser has three systems, ARCADE is the simplest)
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.gravity.y = 100;
 
@@ -53,7 +55,7 @@ window.onload = function() {
 
   /**
    * Let Phaser do the collision check between ball and floor
-   * Phser deals with the collision according to physics laws and setting set (like gravity and bouncyness)
+   * Phaser deals with the collision according to physics laws and settings (like gravity and bouncyness)
    */
   function update() {
     game.physics.arcade.collide(ball, floor);
