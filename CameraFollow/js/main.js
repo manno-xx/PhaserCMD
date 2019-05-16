@@ -22,7 +22,7 @@ window.onload = function() {
   });
 
   // the sprite of the phaser dude
-  var dude;
+  var avatar;
   var cursors;
 
   /**
@@ -30,7 +30,7 @@ window.onload = function() {
    */
   function preload() {
     game.load.image("tileset", "assets/kenneyrpgpack/Spritesheet/RPGpack_sheet.png");
-    game.load.image("dude", "assets/phaser-dude.png");
+    game.load.spritesheet("male", "assets/BODY_male.png", 64, 64);
     
     // https://photonstorm.github.io/phaser-ce/Phaser.Loader.html#tilemap
     game.load.tilemap(
@@ -66,7 +66,13 @@ window.onload = function() {
     ground.resizeWorld();
     
     // place a controllable sprite in the game
-    dude = game.add.sprite(100, 100, "dude");
+    avatar = game.add.sprite(200, 200, "male", 0);
+    avatar.animations.add("up", [1, 2, 3, 4, 5, 6, 7, 8], 14, true);
+    avatar.animations.add("left", [10, 11, 12, 13, 14, 15, 16, 17], 14, true);
+    avatar.animations.add("down", [19, 20, 21, 22, 23, 24, 25, 26], 14, true);
+    avatar.animations.add("right", [28, 29, 30, 31, 32, 33, 34, 35], 14, true);
+    avatar.animations.add("idle", [18], 14, false);
+    avatar.play("right");
 
     // 'activate' the cursor keys
     cursors = game.input.keyboard.createCursorKeys();
@@ -74,7 +80,7 @@ window.onload = function() {
     // set the camera to follow mode
     // it follows the phaser dude sprite
     // using a setting with a dead zone (moving within the central part of the view does not move the camera)
-    game.camera.follow(dude, Phaser.Camera.FOLLOW_TOPDOWN);
+    game.camera.follow(avatar, Phaser.Camera.FOLLOW_TOPDOWN);
   }
 
   /**
@@ -83,18 +89,40 @@ window.onload = function() {
    * 
    */
   function update(){
+    var direction = new Phaser.Point(0, 0);
+
     if(cursors.right.isDown){
-        dude.x++;
+        direction.x++;
     }
     if(cursors.left.isDown){
-        dude.x--;
+        direction.x--;
     }
     if(cursors.down.isDown){
-        dude.y++;
+        direction.y++;
     }
     if(cursors.up.isDown){
-        dude.y--;
+        direction.y--;
     }
+
+    if(direction.getMagnitude() === 0){
+        avatar.play("idle");
+    }
+    else if(direction.x < 0){
+        avatar.play("left");
+    }
+    else if(direction.x > 0){
+        avatar.play("right");
+    }
+    else if(direction.y < 0){
+        avatar.play("up");
+    }
+    else if(direction.y > 0){
+        avatar.play("down");
+    }
+
+    avatar.x += direction.x;
+    avatar.y += direction.y;
+
   }
 
   /**
