@@ -83,7 +83,7 @@ window.onload = function() {
     
     // https://photonstorm.github.io/phaser-ce/Phaser.Camera.html#shake
     game.camera.shake(0.05, 200, true, Phaser.Camera.SHAKE_HORIZONTAL, true);
-
+    
     emitter.emitX = bullet.position.x; 
     emitter.emitY = bullet.position.y;
     emitter.start(true, 1000, null, 10);

@@ -80,7 +80,7 @@ window.onload = function() {
     // set the camera to follow mode
     // it follows the phaser dude sprite
     // using a setting with a dead zone (moving within the central part of the view does not move the camera)
-    game.camera.follow(avatar, Phaser.Camera.FOLLOW_TOPDOWN);
+    game.camera.follow(avatar, Phaser.Camera.LOCKON, 0.1, 0.1);
   }
 
   /**
@@ -103,6 +103,8 @@ window.onload = function() {
     if(cursors.up.isDown){
         direction.y--;
     }
+
+    direction.setMagnitude(10);
 
     if(direction.getMagnitude() === 0){
         avatar.play("idle");
